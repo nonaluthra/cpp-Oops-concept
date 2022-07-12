@@ -1,0 +1,38 @@
+//Multiple inheritance---one class is derived from 2 base classes
+#include <iostream>
+
+using namespace std;
+class base1{
+    protected:
+    int base1;
+    public:
+    void setNumber1(int a){
+        base1=a;
+    }
+};
+class base2{
+     protected:
+    int base2;
+    public:
+    void setNumber2(int b){
+        base2=b;
+    }
+};
+class derived:public base1,public base2{
+    public:
+    void show(){
+        cout<<base1<<endl;
+        cout<<base2<<endl;
+        cout<<base1*base2<<endl;
+        
+    }
+};
+int main()
+{
+derived der;
+der.setNumber1(23);
+der.setNumber2(90);
+der.show();
+
+    return 0;
+}
