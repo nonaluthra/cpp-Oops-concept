@@ -1,0 +1,35 @@
+//Copy constructor---if we do not define copy constructor compiler makes own default copy constructor for every class
+#include <iostream>
+
+using namespace std;
+class Number{
+    int a;
+    public:
+    Number(){
+        a=10;
+    };
+    Number(int num){
+        a=num;
+    }
+    Number(Number &obj){         //copy constructor
+        a=obj.a;
+    }
+    void display(void){
+        cout<<"The number is "<<a<<endl;
+    }
+};
+int main()
+{
+    Number n1,n2,n3(23),z3;
+    
+    n1.display();
+    n2.display();
+    n3.display();
+    Number z1 = n1;//Copy constructor is invoked;
+    z1.display();
+    Number z2(n2);//Copy constructor is invoked;
+    z2.display();
+    z3(n3);       //Copy constructor does not invoked
+    z3.display();
+    return 0;
+}
