@@ -1,0 +1,60 @@
+//Single Inheritance----only one class can be derived from base class
+#include <iostream>
+using namespace std;
+class base
+{
+  int data1;
+public:
+  int data2;
+  void setData ()
+  {
+    data1 = 10;
+    data2 = 20;
+  }
+  int getData1 ()
+  {
+    return data1;
+  }
+  int getData2 ();
+
+};
+
+int
+base::getData2 (void)
+{
+  return data2;
+}
+
+class derived:public base
+{
+  int data3;
+public:
+  void process ();
+  void display ();
+};
+void
+derived::process (void)
+{
+  data3 = data2 * getData1 ();	//------use getData1 func. to get value of data as data1 is private member
+}
+
+void
+derived::display ()
+{
+  // cout<<data1---------------throws error as data1 is private member
+  cout<<getData1()<<endl;
+  cout << data2 << endl;
+  cout << data3 << endl;
+}
+
+int
+main ()
+{
+  derived der;
+  der.setData ();
+  der.process ();
+  der.display ();
+
+  return 0;
+}
+
