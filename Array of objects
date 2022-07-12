@@ -1,0 +1,27 @@
+//Array of objects
+#include<iostream>
+using namespace std;
+class Employee{
+    int id;
+    int salary;
+    public:
+    void setId(void){
+        salary=122;
+        cout<<"Enter the id of employee"<<endl;
+        cin>>id;
+    }
+    void getId(void){
+        cout<<"Id of the employee is "<<id<<endl;
+    }
+};
+int main(){
+    Employee amisha[3];
+    for(int i=0;i<3;i++){
+        amisha[i].setId();
+        amisha[i].getId();
+    }
+    
+    return 0;
+}
+
+
