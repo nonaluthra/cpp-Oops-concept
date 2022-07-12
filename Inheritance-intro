@@ -1,0 +1,70 @@
+//  Inheritance syntax
+#include <iostream>
+
+using namespace std;
+class Employee
+{
+
+  int salary;
+public:
+  int id;
+    Employee (int imp)
+  {
+    id = imp;
+    salary = 5000;
+  }
+  void getId (void)
+  {
+    cout << id << endl;
+
+  }
+  Employee ()
+  {
+  }
+};
+
+class Programmer:public Employee
+{				/*public is visibility mode here
+				   ---if visibility mode is public then public member of base class becomes public member of derived class
+				   ---if visibility mode is private then public member of base class becomes private member of derived class
+				   ---private member can never be inherited from base class
+				   ---by default visibility mode is private */
+public:
+  Programmer (int imp)
+  {
+    id = imp;
+  }
+  void getId (void)
+  {
+    cout << id << endl;
+
+  }
+};
+class Programmer1:Employee
+{
+    public:
+  Programmer1 (int imp)
+  {
+    id = imp;
+  }
+  void getId (void)
+  {
+    cout << id << endl;
+
+  }
+};
+int
+main ()
+{
+  Employee amisha (2);
+  amisha.getId ();
+  Programmer p (16);
+  cout<<p.id <<endl;
+  p.getId();
+  Programmer1 p1 (21);
+  //---cout<<p1.id<<endl;---throws error as id is private member in this class bcz visibility mode is private
+  p1.getId ();
+
+  return 0;
+}
+
