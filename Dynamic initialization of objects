@@ -1,0 +1,50 @@
+
+#include <iostream>
+
+using namespace std;
+class BankDeposit{
+    int principal;
+    int years;
+    float rateOfInterest;
+    float returnValue;
+    public:
+    BankDeposit(void){
+        principal=1000;
+        years=1;
+        rateOfInterest=10;
+    }
+    BankDeposit(int p,int y,int r){
+    principal=p;
+    years=y;
+    rateOfInterest=float(r)/100;
+    returnValue=principal;
+    for(int i=0;i<y;i++){
+        returnValue*=(1+rateOfInterest);
+    }
+    }
+    BankDeposit(int p,int y,float r){
+    principal=p;
+    years=y;
+    rateOfInterest=r;
+    for(int i=0;i<y;i++){
+        returnValue*=(1+rateOfInterest);
+    }
+    }
+    void show(void){
+        cout<<"The value of principal is "<<principal<<" and the returnValue is "<<returnValue<<endl;
+    }
+};
+int main()
+{
+  int p,y,R;
+  float r;
+  cout<<"Enter the values"<<endl;
+  cin>>p>>y>>r;
+  BankDeposit bd1,bd2,bd3;
+  bd1=BankDeposit(p,y,r);
+  bd1.show();
+  cin>>p>>y>>R;
+  bd2=BankDeposit(p,y,R);
+  bd2.show();
+    return 0;
+}
