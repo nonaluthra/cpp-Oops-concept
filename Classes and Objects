@@ -1,0 +1,28 @@
+#include<iostream>
+using namespace std;
+class Employee{
+   static int emp_id;
+     int count;
+public:
+void setId(void);
+void getId(void);
+};
+int Employee::count;
+void Employee::setId(){
+    cout<<"Enter the id of employee"<<endl;
+    cin>>emp_id;
+    count++;
+}
+void Employee::getId(){
+    cout<<"The id of employee is "<<emp_id<<" and the employee number is "<<count<<endl;
+}
+int main(){
+    Employee amisha,lavisha,Chakshit;
+    amisha.setId();
+    amisha.getId();
+    lavisha.setId();
+    lavisha.getId();
+    Chakshit.setId();
+    Chakshit.getId();
+    return 0;
+}
