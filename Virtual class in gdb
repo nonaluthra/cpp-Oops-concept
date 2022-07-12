@@ -1,0 +1,80 @@
+/*Virtual base class----in this the instance roll_no is obtained by class result from both 
+the test and score class bcz these both classes are inherited by class student
+-so it creates an ambiguity to resolve this ambiguity we ses the virtual class 
+and make our base class virtual*/
+#include <iostream>
+using namespace std;
+
+class student
+{
+protected:
+  int roll_no;
+public:
+  void setNumber (int r)
+  {
+    roll_no = r;
+
+  }
+  void display (void)
+  {
+    cout << "Roll no. is " << roll_no << endl;
+  }
+};
+
+class Test:virtual public student
+{
+protected:
+  int maths, physics;
+public:
+  void setMarks (int m, int p)
+  {
+    maths = m;
+    physics = p;
+  }
+  void getMarks (void)
+  {
+    cout << "Maths marks is " << maths << endl;
+    cout << "Maths marks is " << maths << endl;
+  }
+};
+
+class sport:virtual public student
+{
+protected:
+  int score;
+public:
+  void setScore (int sc)
+  {
+    score = sc;
+  }
+  void getScore (void)
+  {
+    cout << "Your score is " << score << endl;
+  }
+};
+
+class result:public Test, public sport
+{
+protected:
+  int result;
+public:
+  void show (void)
+  {
+    display ();
+    getMarks ();
+    getScore ();
+    cout << "Your result is " << maths + physics + score << endl;
+  }
+};
+int
+main ()
+{
+
+  result res;
+  res.setNumber (9);
+  res.setMarks (90, 76);
+  res.setScore (78);
+  res.show ();
+  return 0;
+}
+
