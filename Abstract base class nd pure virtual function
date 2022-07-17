@@ -1,0 +1,58 @@
+//Abstract base class nd pure virtual function 
+/*Abstract base class---which have atleast one virtual function 
+and does not used to create object but only made so that other classes are derived from it*/
+#include <iostream>
+using namespace std;
+class CWH{     //This class is abstract base class
+    protected:
+    string title;
+    float rating;
+    public:
+    CWH(string t,float r){
+        title=t;
+        rating=r;
+    }
+    void virtual display()=0/*--This is pure virtual function which do nothing in this 
+    we have to specify the display method of derived classes otherwise it throws an error
+   ----- If this is not pure virtual function then the display method of  CWH runs 
+   -----if one of the display method of derived classes are not specified*/
+};
+class CWHVideo:public CWH{
+    int videoLength;
+    public:
+    CWHVideo(string t,float r,int vl):CWH(t,r){
+        videoLength=vl;
+    }
+    void display(){
+        cout<<"Title of video is "<<title<<endl;
+        cout<<"Rating is : "<<rating<<endl;
+        cout<<"Length of video is "<<videoLength<<" minutes"<<endl;
+    }
+};
+class CWHText:public CWH{
+    int words;
+    public:
+    CWHText(string t,float r,int wc):CWH(t,r){
+       words=wc;
+    }
+    void display(){
+        cout<<"Title of text is "<<title<<endl;
+        cout<<"Rating is : "<<rating<<endl;
+        cout<<"Word count is "<<words<<" words"<<endl;
+    }
+};
+int main()
+{
+   CWHVideo video("CSS ",5.6,10);
+  // video.display();
+CWHText text("CSS ",4.6,100);
+  // text.display();
+   CWH* tuts[2];
+   tuts[0]=&video;
+   tuts[1]=&text;
+   tuts [0]->display();//then here the display method of CWH runs and not of derived classes
+   tuts[1]->display();//to run the display method of derived classes here we have to make the display method of class  CWH virtual 
+    return 0;
+}
+
+
